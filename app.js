@@ -1,10 +1,12 @@
 const path = require('path')
 const fs = require('fs/promises')
+const cors = require('cors')
 const express = require('express')
 const { v4: uuidv4 } = require('uuid')
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 async function getUsersList() {
     const usersList = await fs.readFile(path.join(__dirname, 'db.json'), { encoding: 'utf-8' })
